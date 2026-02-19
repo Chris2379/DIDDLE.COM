@@ -1,81 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>FNAF Game</title>
-
+<title>FNAF Fullscreen</title>
 <style>
 html, body {
-  margin: 0;
-  padding: 0;
-  background: #111;
-  font-family: Arial, sans-serif;
-  color: white;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background: black;
 }
 
-.page-title {
-  text-align: center;
-  font-size: 50px;
-  margin: 30px 0 10px 0;
+.game-frame {
+    position: fixed;
+    inset: 0;
 }
 
-#fullscreenBtn {
-  display: block;
-  margin: 0 auto 20px auto;
-  padding: 12px 25px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 8px;
-  border: none;
-  transition: 0.2s;
-}
-
-#fullscreenBtn:hover {
-  background: #444;
-  color: white;
-}
-
-.game-container {
-  width: 95%;
-  max-width: 1200px;
-  height: 80vh;
-  margin: auto;
-}
-
-.game-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 10px;
+.game-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 </style>
 </head>
-
 <body>
 
-<h1 class="page-title">FNAF</h1>
-
-<button id="fullscreenBtn">Fullscreen</button>
-
-<div class="game-frame"><iframe data-testid="test_app_frame" id="test_app_frame" allowfullscreen="" allow="autoplay; fullscreen; camera; focus-without-user-activation *; monetization; gamepad;
-             keyboard-map *; xr-spatial-tracking; clipboard-write" name="appFrame" scrolling="no" sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock
-                allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin
-                allow-downloads" src="https://db.ducklit.com/html/fnaf/index.html" style="width: 100%; height: 100%; border: none;"></iframe></div>
-
-<script>
-const container = document.getElementById("gameContainer");
-const button = document.getElementById("fullscreenBtn");
-
-button.addEventListener("click", () => {
-  if (!document.fullscreenElement) {
-    container.requestFullscreen();
-    button.textContent = "Exit Fullscreen";
-  } else {
-    document.exitFullscreen();
-    button.textContent = "Fullscreen";
-  }
-});
-</script>
+<div class="game-frame">
+    <iframe 
+        src="https://db.ducklit.com/html/fnaf/index.html"
+        allowfullscreen
+        allow="fullscreen; autoplay; gamepad"
+        sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms allow-popups"
+    ></iframe>
+</div>
 
 </body>
 </html>
