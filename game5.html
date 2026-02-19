@@ -63,12 +63,8 @@ const button = document.getElementById("fullscreenBtn");
 
 button.addEventListener("click", () => {
   if (!document.fullscreenElement) {
-    container.requestFullscreen().catch(err => {
       alert(`Fullscreen failed: ${err.message}`);
     });
-    button.textContent = "Exit Fullscreen";
-  } else {
-    document.exitFullscreen();
     button.textContent = "Fullscreen";
   }
 });
