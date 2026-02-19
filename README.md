@@ -1,1 +1,1 @@
-# DIDDLE.COM
+# calcoulator.solver
