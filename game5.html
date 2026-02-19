@@ -46,3 +46,22 @@
 <h1 class="page-title">OvO</h1>
 
 <button id="fullscreenBtn">Fullscreen</button>
+
+  
+  <script>
+const container = document.getElementById("gameContainer");
+const button = document.getElementById("fullscreenBtn");
+
+button.addEventListener("click", () => {
+  if (!document.fullscreenElement) {
+    container.requestFullscreen();
+    button.textContent = "Exit Fullscreen";
+  } else {
+    document.exitFullscreen();
+    button.textContent = "Fullscreen";
+  }
+});
+</script>
+
+</body>
+</html>
