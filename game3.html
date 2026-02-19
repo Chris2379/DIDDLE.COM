@@ -22,11 +22,12 @@ html, body {
 #fullscreenBtn {
   display: block;
   margin: 0 auto 20px auto;
-  padding: 10px 20px;
+  padding: 12px 25px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 8px;
   border: none;
+  transition: 0.2s;
 }
 
 #fullscreenBtn:hover {
@@ -45,6 +46,7 @@ html, body {
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: 10px;
 }
 </style>
 </head>
@@ -56,11 +58,9 @@ html, body {
 <button id="fullscreenBtn">Fullscreen</button>
 
 <div class="game-container" id="gameContainer">
-  <iframe
-    allowfullscreen
-    allow="autoplay; fullscreen; camera; focus-without-user-activation *; monetization; gamepad; keyboard-map *; xr-spatial-tracking; clipboard-write"
-    sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin allow-downloads"
-    src="https://db.ducklit.com/html/fnaf/index.html">
+  <iframe 
+    src="/games/2024/more2/five-nights-at-freddys/fnaf/game.html"
+    allowfullscreen>
   </iframe>
 </div>
 
