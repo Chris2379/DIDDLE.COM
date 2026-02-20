@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Base path for GitHub Pages -->
+  <base href="/calculator.solver/">
+
   <!-- Google Ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8362959866002557" crossorigin="anonymous"></script>
 
@@ -40,9 +43,7 @@
       document.head.appendChild(gtagScript);
 
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       window.gtag = gtag;
 
       gtag("js", new Date());
@@ -64,7 +65,7 @@
       display: flex;
       justify-content: center; /* horizontal center */
       align-items: center;     /* vertical center */
-      background: #111;        /* optional */
+      background: #111;
       overflow: hidden;
     }
 
@@ -75,8 +76,8 @@
       flex-direction: column; /* stack children vertically */
       width: 100%;
       height: 100%;
-      max-width: 1200px;  /* optional: constrain max size */
-      max-height: 800px;  /* optional: constrain max size */
+      max-width: 1200px;  /* optional max size */
+      max-height: 800px;  /* optional max size */
     }
   </style>
 </head>
