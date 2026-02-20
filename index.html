@@ -6,6 +6,53 @@
 <title>Preparing for Calculations</title>
 
 <style>
+    
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  margin: 30px 0;
+  font-size: 50px;
+}
+
+.games-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.game-card {
+  text-align: center;
+}
+
+.game-card img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid white;
+  transition: 0.2s;
+}
+
+.game-card img:hover {
+  transform: scale(1.05);
+  border-color: yellow;
+}
+
+.game-card span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+</style>
+
+    <style>
     /* --- Popup background overlay --- */
     #popupOverlay {
       position: fixed;
@@ -67,8 +114,8 @@
 <body>
   <div id="popupOverlay">
     <div id="popupBox">
-      <h2>Wassup</h2>
-      <p>I know no one plays this but me but like.... I'm gonna add games almost daily so like have fun</p>
+      <h2>Welcome to My GitHub Page!</h2>
+      <p>You can customize this message to say whatever you want.</p>
       <button id="closePopup">Close</button>
     </div>
   </div>
@@ -83,53 +130,10 @@
       const popup = document.getElementById('popupOverlay');
       popup.classList.remove('show');
     });
-    
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: white;
-  text-align: center;
-}
-
-h1 {
-  margin: 30px 0;
-  font-size: 50px;
-}
-
-.games-container {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.game-card {
-  text-align: center;
-}
-
-.game-card img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 3px solid white;
-  transition: 0.2s;
-}
-
-.game-card img:hover {
-  transform: scale(1.05);
-  border-color: yellow;
-}
-
-.game-card span {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-}
-</style>
+  </script>
+</body>
+</html>
 </head>
-
 <body>
 
 <h1>Have fun yo</h1>
