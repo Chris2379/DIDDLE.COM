@@ -9,11 +9,12 @@ html, body {
   margin: 0;
   padding: 0;
   background: #111;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 #fullscreenBtn {
@@ -23,12 +24,12 @@ html, body {
   cursor: pointer;
 }
 
+/* Make game container fill most of the screen dynamically */
 .game-container {
-  width: 90vw;       /* 90% of viewport width */
-  max-width: 1600px; /* optional max width */
-  height: 80vh;      /* 80% of viewport height */
-  max-height: 1000px; /* optional max height */
-  display: flex;
+  width: 95vw;      /* almost full width */
+  height: 90vh;     /* almost full height */
+  max-width: 1600px;
+  max-height: 1000px;
 }
 
 .game-container iframe {
@@ -43,7 +44,7 @@ html, body {
 <button id="fullscreenBtn">Fullscreen</button>
 
 <div class="game-container" id="gameContainer">
-  <iframe data-testid="test_app_frame" id="test_app_frame" allowfullscreen
+  <iframe id="test_app_frame" allowfullscreen
           allow="autoplay; fullscreen; camera; focus-without-user-activation *; monetization; gamepad; keyboard-map *; xr-spatial-tracking; clipboard-write"
           name="appFrame" scrolling="no"
           sandbox="allow-forms allow-modals allow-orientation-lock allow-pointer-lock allow-popups allow-popups-to-escape-sandbox allow-presentation allow-scripts allow-same-origin allow-downloads"
