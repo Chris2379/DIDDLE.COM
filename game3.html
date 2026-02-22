@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Answers</title>
+<title>FNAF Mobile Fix</title>
 <style>
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
     width: 100%;
+    height: 100%;
     background: black;
     overflow: hidden;
 }
@@ -17,67 +17,56 @@ html, body {
 .game-frame {
     position: fixed;
     inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .game-frame iframe {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     border: none;
-}
-
-#startBtn {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,0,0,0.8);
-    color: white;
-    font-size: 24px;
-    font-family: Arial, sans-serif;
-    z-index: 999;
-    cursor: pointer;
-    user-select: none;
-    text-align: center;
-    padding: 20px;
 }
 </style>
 </head>
 <body>
 
 <div class="game-frame" id="gameContainer">
-    <iframe 
+    <iframe
         src="https://db.ducklit.com/html/fnaf/index.html"
         allowfullscreen
         allow="fullscreen; autoplay; gamepad"
         sandbox="allow-scripts allow-same-origin allow-pointer-lock allow-forms allow-popups"
-        tabindex="0"
+        id="gameIframe"
     ></iframe>
 </div>
 
-<div id="startBtn">Tap to Start Game</div>
-
 <script>
-const startBtn = document.getElementById('startBtn');
+const iframe = document.getElementById('gameIframe');
 const container = document.getElementById('gameContainer');
-const iframe = container.querySelector('iframe');
 
-startBtn.addEventListener('click', () => {
-    // Attempt fullscreen on mobile
-    if (container.requestFullscreen) container.requestFullscreen();
-    else if (container.webkitRequestFullscreen) container.webkitRequestFullscreen(); // Safari
-    else if (container.msRequestFullscreen) container.msRequestFullscreen(); // IE
+// Force the iframe to receive touch events
+function focusIframe() {
+    iframe.focus({ preventScroll: true });
+}
 
-    iframe.focus();
-    startBtn.style.display = 'none'; // hide button
-});
+// On mobile, we need to capture the first touch and forward it to the iframe
+if (/Mobi|Android/i.test(navigator.userAgent)) {
+    container.addEventListener('touchstart', (e) => {
+        focusIframe();
+        // Forward the touch to the iframe (triggers the in-game "touch to continue")
+        const touch = e.touches[0];
+        const simulatedEvent = new TouchEvent('touchstart', {
+            touches: [touch],
+            targetTouches: [touch],
+            changedTouches: [touch],
+            bubbles: true,
+            cancelable: true
+        });
+        iframe.contentWindow.document.dispatchEvent(simulatedEvent);
+    }, { passive: false });
+}
 
-// Always keep iframe focused for input
-container.addEventListener("click", () => iframe.focus());
-window.addEventListener("load", () => iframe.focus());
+// Also focus on any tap or click
+container.addEventListener('click', focusIframe);
+window.addEventListener('load', focusIframe);
 </script>
 
 </body>
