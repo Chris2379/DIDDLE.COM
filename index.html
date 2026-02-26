@@ -66,13 +66,6 @@ button:hover {
   margin-top: 10px;
   font-weight: bold;
 }
-.pagination {
-  margin-bottom: 40px;
-}
-.active-page {
-  background: yellow;
-  color: black;
-}
 
 /* ---------- POPUP STYLES ---------- */
 .modal {
@@ -225,21 +218,6 @@ function updateGames(){
   renderGames(filtered);
 }
 
-// ---------------- RENDER ----------------
-function renderGames(filteredGames){
-  gamesContainer.innerHTML="";
-  const start = (currentPage-1)*gamesPerPage;
-  const end = start+gamesPerPage;
-  filteredGames.slice(start,end).forEach(game=>{
-    const card=document.createElement("div");
-    card.className="game-card";
-    card.dataset.category=game.category;
-    card.innerHTML=`<a href="${game.file}"><img src="${game.img}"></a><span>${game.name}</span>`;
-    gamesContainer.appendChild(card);
-  });
-  createPagination(filteredGames.length);
-}
-
 // ---------------- CATEGORY ----------------
 function filterCategory(category){
   currentCategory=category;
@@ -247,18 +225,6 @@ function filterCategory(category){
   updateGames();
 }
 
-// ---------------- PAGINATION ----------------
-function createPagination(totalGames){
-  pagination.innerHTML="";
-  const totalPages=Math.ceil(totalGames/gamesPerPage);
-  for(let i=1;i<=totalPages;i++){
-    const btn=document.createElement("button");
-    btn.textContent=i;
-    if(i===currentPage) btn.classList.add("active-page");
-    btn.addEventListener("click",()=>{currentPage=i; updateGames();});
-    pagination.appendChild(btn);
-  }
-}
 
 // ---------------- SEARCH ----------------
 searchInput.addEventListener("input",()=>{
