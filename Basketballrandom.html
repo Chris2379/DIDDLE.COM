@@ -17,16 +17,9 @@ html, body {
   height: 100vh;
 }
 
-#fullscreenBtn {
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
 .game-container {
   width: 900px;
-  height: 550px;
+  height: 900px;
 }
 
 .game-container iframe {
@@ -47,20 +40,6 @@ html, body {
   </iframe>
 </div>
 
-<script>
-const container = document.getElementById("gameContainer");
-const button = document.getElementById("fullscreenBtn");
-
-button.addEventListener("click", () => {
-  if (!document.fullscreenElement) {
-    container.requestFullscreen();
-    button.textContent = "Exit Fullscreen";
-  } else {
-
-    button.textContent = "Fullscreen";
-  }
-});
-</script>
 
 </body>
 </html>
