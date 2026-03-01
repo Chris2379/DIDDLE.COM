@@ -1,0 +1,366 @@
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>MOTO ROAD RASH 3D</title>
+    <link rel="shortcut icon" href="/images/motoroadrash3d.png">
+    <style type="text/css">
+      .report-modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .report-modal-content {
+        background-color: #fefefe;
+        color: #000;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        max-width: 320px;
+      }
+
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .report-label {
+        padding: 0 10px;
+        margin-right: 5px;
+        border-radius: 15px;
+        display: inline-block;
+        margin-bottom: 8px;
+      }
+      .sticky-ads {
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 267px;
+	box-shadow: 0 -6px 18px 0 rgba(9, 32, 76, .1);
+	-webkit-transition: all .1s ease-in;
+	transition: all .1s ease-in;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #fefefe;
+	z-index: 20;
+}
+
+.sticky-ads-close {
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px 0 0;
+	position: absolute;
+	right: 0;
+	top: -25px;
+	background-color: #fefefe;
+	box-shadow: 0 -6px 18px 0 rgba(9, 32, 76, .08);
+	cursor: pointer;
+}
+
+.sticky-ads .sticky-ads-close svg {
+	width: 22px;
+	height: 22px;
+	fill: #000;
+}
+
+.sticky-ads .sticky-ads-content {
+	overflow: hidden;
+	display: block;
+	position: relative;
+	height: 260px;
+	width: 100%;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding: 0px;
+}
+    </style>
+
+    <link rel="preconnect" type="text/css" href="https://fonts.googleapis.com">
+    <link rel="preconnect" type="text/css" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&amp;display=swap" rel="stylesheet" as="style" onload="this.rel='stylesheet'">
+    <link rel="stylesheet" type="text/css" href="detail.css" media="all" onload="this.media='all'">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0FYV7REWR8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0FYV7REWR8');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7889675448259925"
+    crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="2JZbZEJjjn8LZ2ruRMxBFfQsxZFuXFJgLne_oJKN3Uc" />
+  </head>
+  <body style="">
+    <div class="master">
+      <div class="sidebar">
+        <div class="side-header">
+          <div class="burger for-mobile">
+            <span class="icon-burger"></span>
+          </div>
+          <a class="logo" href="/">
+            <img src="/images/logo.png" alt="logo" width="228" height="40">
+          </a>
+          <div class="bt-more for-mobile">
+            <span class="icon-ellipsis"></span>
+          </div>
+        </div>
+        <ul class="side-menu mCustomScrollbar _mCS_1" data-mcs-theme="dark">
+          <div id="mCSB_1" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: 769px;" tabindex="0">
+            <div id="mCSB_1_container" class="mCSB_container" style="position: relative; left: 0px;" dir="ltr">
+              <li class="category-item ">
+                <a onclick="loadCategory('car')">
+                  <span class="g-icon">
+                    <img src="/images/racing.svg" alt="Car" width="40" height="40" class="mCS_img_loaded">
+                  </span> Car </a>
+              </li>
+              <li class="category-item ">
+                <a onclick="loadCategory('skill')">
+                  <span class="g-icon">
+                    <img src="/images/3d.svg" alt="3D" width="40" height="40" class="mCS_img_loaded">
+                  </span> Skill </a>
+              </li>
+              <li class="category-item ">
+                <a onclick="loadCategory('action')">
+                  <span class="g-icon">
+                    <img src="/images/actions.svg" alt="Action" width="40" height="40" class="mCS_img_loaded">
+                  </span> Action </a>
+              </li>
+              <li class="category-item ">
+                <a onclick="loadCategory('parking')">
+                  <span class="g-icon">
+                    <img src="/images/clicker.svg" alt="Clicker" width="40" height="40" class="mCS_img_loaded">
+                  </span> Parking </a>
+              </li>
+              <li class="category-item ">
+                <a onclick="loadCategory('racing')">
+                  <span class="g-icon">
+                    <img src="/images/racing.svg" alt="Racing" width="40" height="40" class="mCS_img_loaded">
+                  </span> Racing </a>
+              </li>
+              <li class="category-item ">
+                <a onclick="loadCategory('shooting')">
+                  <span class="g-icon">
+                    <img src="/images/other.svg" alt="Shooting" width="40" height="40" class="mCS_img_loaded">
+                  </span> Shooting </a>
+              </li>
+              <li class="category-item ">
+                <a onclick="loadCategory('sport')">
+                  <span class="g-icon">
+                    <img src="/images/sport.svg" alt="Sports" width="40" height="40" class="mCS_img_loaded">
+                  </span> Sports </a>
+              </li>
+              <li class="category-item ">
+                <a onclick="loadCategory('stickman')">
+                  <span class="g-icon">
+                    <img src="/images/other.svg" alt="Stickman" width="40" height="40" class="mCS_img_loaded">
+                  </span> Stickman </a>
+              </li>
+              <li class="category-item ">
+                <a onclick="loadCategory('running')">
+                  <span class="g-icon">
+                    <img src="/images/racing.svg" alt="Running" width="40" height="40" class="mCS_img_loaded">
+                  </span> Running </a>
+              </li>
+              <li class="category-item ">
+                <a onclick="loadCategory('idle')">
+                  <span class="g-icon">
+                    <img src="/images/clicker.svg" alt="Idle" width="40" height="40" class="mCS_img_loaded">
+                  </span> Idle </a>
+              </li>
+            </div>
+            <div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-dark mCSB_scrollTools_vertical" style="display: block;">
+              <div class="mCSB_draggerContainer">
+                <div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; top: 375px; display: block; height: 394px; max-height: 759px;">
+                  <div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+                </div>
+                <div class="mCSB_draggerRail"></div>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </div>
+      <div class="g-content">
+        <section class="header">
+          <div class="columns">
+            
+            <div class="column is-8">
+              <ul class="main-menu nav-menu">
+                <li class="nav-item ">
+                  <a class="nav-link">Setting Cloak</a>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="mid-ct section-game">
+          <div class="container">
+            <div class="columns">
+              <div class="column is-12-tablet is-9-desktop">
+                <div class="article game-container">
+                  <div class="game-iframe-container" id="game-play">
+                    <!-- <iframe class="game-iframe" id="game-area" src="#" width="400" height="800" scrolling="none" frameborder="0" allowfullscreen=""></iframe> -->
+                    <div class="talpa-splash-container" style="background: var(--color2);" id="preload"><div class="talpa-splash-top"><div><div style="--thumb:url(/images/motoroadrash3d.png)" alt="Stylish Crop Top Trends);"></div><button id="talpa-splash-button" class="SP-splash-button" onclick="loadMainGame()" style="display: block;">play now!</button><div class="talpa-loader" style="display: none;">Loading...</div></div></div><div class="talpa-splash-bottom"></div></div>
+                  </div>
+                  <div class="article-header">
+                    <div class="text">
+                      <h1 id="title">Moto road rash 3D</h1>
+                    </div>
+                    <div class="bt-group-2">
+                      <a onclick="open_fullscreen()">
+                        <span class="icon-fullscreen"></span> Fullscreen </a>
+                    </div>
+                  </div>
+                  <div class="article-ct">
+                    <h3>Description</h3>
+                    <p class="game-description">If you enjoy motorcycle racing, you'll enjoy Moto Road Rash 3D great visuals, frantic gameplay, and hard races. Get behind the handlebars and race from one location to another. You'll get to explore a big metropolis in career mode, and three more game types will keep the game intriguing for a long time. Motor Road Rash 3D unblocked includes 29 different motorcycles to unlock, so you'll need to work hard if you want the quickest bike in the game! Before you begin playing, go to the options menu and raise the graphics level to "High" - you'll be glad you did.</p>
+                    <h3>Controls</h3>
+                    <p class="game-instructions">WASD or Arrow keys - Race/Break & Turn the bikeSpace - Wheelie</p>
+                    <h3>About TBG95</h3>
+                    <p class="game-description">
+TBG95 is a website that offers unblocked games and proxy apps for school use. TBG95 was founded in January 2022 with the aim of giving users the best experience of unblocked games and unblocked proxy apps at school. You also do not need to install any additional software or know any plugins. People can play many other games, such as racing, shooting, mind games, sports, or slope games...
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-12-tablet is-3-desktop">
+                <div class="widget-sidebar">
+                  <div class="sm-widget">
+                    <div class="widget">
+                      <div class="box-title">
+                        <h4>Similar Games</h4>
+                      </div>
+                      <ul class="sm-post" id="similar">
+                        
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="sm-widget">
+                    <div class="widget">
+                      <div class="box-title">
+                        <h4>Hot Games</h4>
+                      </div>
+                      <ul class="sm-post" id="hotgame">
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="similar-games">
+          <div class="container">
+            <div class="columns">
+              
+              <div class="column is-8">
+                <div class="section-title">
+                  <h3>
+                    <span class="g-icon">
+                      <img src="/images/similar.svg" alt="" width="40" height="40">
+                    </span> All Games
+                  </h3>
+                </div>
+              </div>
+              <div class="column is-4">
+                <form class="search">
+                  <input type="hidden" name="viewpage" value="search">
+                  <input type="text" placeholder="Search games" id="searchInput" oninput="searchGame()"  name="slug" minlength="2" required="">
+                  <button style="padding: 0;">
+                    <span class="icon-search"></span>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="columns is-multiline listing" id="listgame">
+
+            </div>
+          </div>
+        </section>
+        <section class="section-copyright">
+          <div class="container">
+            <p class="copyright"> motoroadrash3d.github.io © 2022. All rights reserved. <span class="dsb-panel"> <a href="mailto:phan31072020@gmail.com">phan31072020@gmail.com</a> </span>
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class='code-block code-block-12' style='position: fixed; width: 100%!important; z-index: 9999999; text-align: center;bottom: 0px;'>
+
+      <div style="display: none;" class='sticky-ads' id='sticky-ads'>
+      
+      <div class='sticky-ads-close' onclick='closestickyAds();'><svg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'><path d='M278.6 256l68.2-68.2c6.2-6.2 6.2-16.4 0-22.6-6.2-6.2-16.4-6.2-22.6 0L256 233.4l-68.2-68.2c-6.2-6.2-16.4-6.2-22.6 0-3.1 3.1-4.7 7.2-4.7 11.3 0 4.1 1.6 8.2 4.7 11.3l68.2 68.2-68.2 68.2c-3.1 3.1-4.7 7.2-4.7 11.3 0 4.1 1.6 8.2 4.7 11.3 6.2 6.2 16.4 6.2 22.6 0l68.2-68.2 68.2 68.2c6.2 6.2 16.4 6.2 22.6 0 6.2-6.2 6.2-16.4 0-22.6L278.6 256z' /></svg></div>
+      
+        <div class='sticky-ads-content'>
+      
+        <iframe src="https://totallyscience.info/ads-970x250.html" style="width:100%;height:250px" frameborder="0"></iframe>
+      
+        </div>
+      
+      </div>
+        
+    </div> 
+    <script type="text/javascript" src="/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+    <script type="text/javascript" src="/js/firebase-app.js"></script>
+    <script type="text/javascript" src="/js/firebase-analytics.js"></script>
+    <script>
+      window.onload = function () {
+          const destination = window.location.href;
+          window.location.href = "https://eggy-car.github.io/car.html";
+      }
+  </script>
+    <script>
+      // ...
+      const firebaseConfig = {
+        apiKey: "AIzaSyAh4dRojwdsO-Gn13Te4qefZ_52lhHXOUA",
+        authDomain: "motoroadrash3d.firebaseapp.com",
+        projectId: "motoroadrash3d",
+        storageBucket: "motoroadrash3d.appspot.com",
+        messagingSenderId: "432810540253",
+        appId: "1:432810540253:web:8657452e3d35e586c36f34",
+        measurementId: "G-THPQ8H4K21"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const analytics = firebase.analytics();
+    </script>
+     <script type="text/javascript" src="/js/custom.js"></script>
+     <script>
+      function closestickyAds()
+      {
+
+        $("#sticky-ads").css("display", "none");
+
+        stickyClosed = true;
+
+      }
+      $("#sticky-ads").css("display", "block");
+    </script>
+  </body>
+</html>
