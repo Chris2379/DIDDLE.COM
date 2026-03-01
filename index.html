@@ -211,6 +211,9 @@ document.getElementById("signupBtn").addEventListener("click", () => {
   document.getElementById("heroSection").style.display = "none";
   document.getElementById("gameApp").style.display = "block";
   document.getElementById("popupBg").classList.add("active");
+
+  // Scroll to the game app section smoothly
+  document.getElementById("gameApp").scrollIntoView({ behavior: "smooth" });
 });
 
 /* POPUP */
