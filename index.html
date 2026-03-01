@@ -140,12 +140,12 @@ header nav a:hover { text-decoration: underline; }
   <h1>Have fun yo ✌️💀</h1>
 
   <div class="category-buttons">
-    <button onclick="filterCategory('All')" class="active">All</button>
-    <button onclick="filterCategory('Driving')">Driving</button>
-    <button onclick="filterCategory('Sports')">Sports</button>
-    <button onclick="filterCategory('Action')">Action</button>
-    <button onclick="filterCategory('Idle')">Idle</button>
-    <button onclick="filterCategory('Puzzle')">Puzzle</button>
+    <button onclick="filterCategory('All', event)" class="active">All</button>
+    <button onclick="filterCategory('Driving', event)" class="active">Driving</button>
+    <button onclick="filterCategory('Sports', event)" class="active">Sports</button>
+    <button onclick="filterCategory('Action', event)" class="active">Action</button>
+    <button onclick="filterCategory('Idle', event)" class="active">Idle</button>
+    <button onclick="filterCategory('Puzzle', event)" class="active">Puzzle</button>
   </div>
 
   <button id="randomGameBtn">🎲 Play Random</button>
@@ -165,68 +165,70 @@ header nav a:hover { text-decoration: underline; }
 <script>
 /* SHOW GAME APP ON SIGNUP */
 document.getElementById("signupBtn").addEventListener("click", () => {
-  document.getElementById("landingPage").style.display = "none"; // hide entire landing
+  document.getElementById("landingPage").style.display = "none"; // hide landing
   document.getElementById("gameApp").style.display = "block";    // show game section
   document.getElementById("popupBg").classList.add("active");
   document.getElementById("gameApp").scrollIntoView({ behavior: "smooth" });
 });
 
 /* POPUP */
-function closePopup() { document.getElementById("popupBg").classList.remove("active"); }
+function closePopup() {
+  document.getElementById("popupBg").classList.remove("active");
+}
 
 /* ALL GAMES LIST */
 const gamesList = [
-{name:"Stickman GTA City", img:"icon1.png", file:"game1.html", category:"Action"},
-{name:"Drift King", img:"drift.png", file:"game2.html", category:"Driving"},
-{name:"Five Nights At Freddy's", img:"fnaf.png", file:"game3.html", category:"Action"},
-{name:"Highway Traffic", img:"highwaytraffic.png", file:"game4.html", category:"Driving"},
-{name:"OvO", img:"ovo.png", file:"game5.html", category:"Action"},
-{name:"Snowrider", img:"snowrider.png", file:"game6.html", category:"Driving"},
-{name:"Prison Escape", img:"escapeprison.png", file:"game7.html", category:"Action"},
-{name:"Basketball Stars", img:"basketball.png", file:"game8.html", category:"Sports"},
-{name:"Motox3m", img:"motox3m.png", file:"game9.html", category:"Driving"},
-{name:"Golf Orbit", img:"golforbit.png", file:"game10.html", category:"Sports"},
-{name:"Drive Mad", img:"drivemad.png", file:"game11.html", category:"Driving"},
-{name:"Backflip Challenge", img:"backflip.png", file:"game12.html", category:"Action"},
-{name:"Gun Spin", img:"gun.png", file:"game13.html", category:"Action"},
-{name:"Deadly Descent", img:"deadly.png", file:"game14.html", category:"Action"},
-{name:"Wheelie Bike", img:"game.png", file:"game15.html", category:"Driving"},
-{name:"Football Bros", img:"football.png", file:"game16.html", category:"Sports"},
-{name:"Racecar Survival", img:"Arena.png", file:"game17.html", category:"Driving"},
-{name:"Obby but you're on a Bike", img:"obby.png", file:"game18.html", category:"Action"},
-{name:"Hollow Knight (goated)", img:"knight.png", file:"game19.html", category:"Action"},
-{name:"Eddy's Carsim", img:"carsim.png", file:"carsim.html", category:"Driving"},
-{name:"Eggy Car", img:"eggy.png", file:"eggy.html", category:"Driving"},
-{name:"Basketball Random", img:"random.png", file:"Basketballrandom.html", category:"Sports"},
-{name:"Pizza Tower", img:"pizza.png", file:"pizzatower.html", category:"Action"},
-{name:"Bitlife", img:"bitlife.png", file:"bitlife.html", category:"Idle"},
-{name:"Impossible Quiz", img:"impossible.png", file:"games/impossiblequiz.html", category:"Action"},
-{name:"Solar Smash", img:"smash.png", file:"solarsmash.html", category:"Action"},
-{name:"Thorns and Balloon (very ahmet)", img:"thorns.png", file:"thorns.html", category:"Action"},
-{name:"Escape Car", img:"escape.png", file:"escape.html", category:"Driving"},
-{name:"Jetpack Joyride", img:"jetpack.png", file:"game20.html", category:"Action"},
-{name:"Cargo Racing", img:"jeep.png", file:"cargoracing.html", category:"Driving"},
-{name:"Cookie Clicker", img:"cookie.png", file:"game21.html", category:"Idle"},
-{name:"Ragdoll", img:"archer.png", file:"archers.html", category:"Action"},
-{name:"Retro Bowl", img:"ah.png", file:"retrobowl.html", category:"Sports"},
-{name:"Police Chase Drift", img:"drifter.png", file:"drifter.html", category:"Driving"},
-{name:"Slope", img:"slope.png", file:"slopetry4.html", category:"Action"},
-{name:"Cluster Rush", img:"cluster.png", file:"cluster.html", category:"Action"},
-{name:"Stickman Hook", img:"hook.png", file:"stickmanhook.html", category:"Action"},
-{name:"Backrooms", img:"backrooms.png", file:"backrooms.html", category:"Action"},
-{name:"Run 3", img:"run3.png", file:"run3.html", category:"Action"},
-{name:"Snek.io", img:"snek.png", file:"snek.html", category:"Action"},
-{name:"2048", img:"2048.png", file:"games/2048.html", category:"Action"},
-{name:"Idle Restaurant", img:"idle.png", file:"idle.html", category:"Idle"},
-{name:"Little Alchemy 2", img:"alchemy.png", file:"games/alchemy.html", category:"Puzzle"},
-{name:"Watermelon Game", img:"watermelon.png", file:"games/watermelon.html", category:"Puzzle"},
-{name:"Draw Climber", img:"drawclimber.png", file:"games/drawclimber.html", category:"Action"},
-{name:"Bubble Shooter", img:"bubble.png", file:"games/bubble.html", category:"Action"},
-{name:"Checkout Frenzy", img:"checkout.png", file:"games/checkout.html", category:"Action"},
-{name:"Slope 2", img:"Slope2.png", file:"games/slope2.html", category:"Action"},
-{name:"Monkey Mart", img:"mart.png", file:"games/monkeymart.html", category:"Idle"},
-{name:"Draw the Hill", img:"drawthehill.png", file:"games/drawthehill.html", category:"Driving"},
-{name:"Getaway Shootout", img:"getaway.png", file:"games/getaway-shootout.html", category:"Action"}
+  {name:"Stickman GTA City", img:"icon1.png", file:"game1.html", category:"Action"},
+  {name:"Drift King", img:"drift.png", file:"game2.html", category:"Driving"},
+  {name:"Five Nights At Freddy's", img:"fnaf.png", file:"game3.html", category:"Action"},
+  {name:"Highway Traffic", img:"highwaytraffic.png", file:"game4.html", category:"Driving"},
+  {name:"OvO", img:"ovo.png", file:"game5.html", category:"Action"},
+  {name:"Snowrider", img:"snowrider.png", file:"game6.html", category:"Driving"},
+  {name:"Prison Escape", img:"escapeprison.png", file:"game7.html", category:"Action"},
+  {name:"Basketball Stars", img:"basketball.png", file:"game8.html", category:"Sports"},
+  {name:"Motox3m", img:"motox3m.png", file:"game9.html", category:"Driving"},
+  {name:"Golf Orbit", img:"golforbit.png", file:"game10.html", category:"Sports"},
+  {name:"Drive Mad", img:"drivemad.png", file:"game11.html", category:"Driving"},
+  {name:"Backflip Challenge", img:"backflip.png", file:"game12.html", category:"Action"},
+  {name:"Gun Spin", img:"gun.png", file:"game13.html", category:"Action"},
+  {name:"Deadly Descent", img:"deadly.png", file:"game14.html", category:"Action"},
+  {name:"Wheelie Bike", img:"game.png", file:"game15.html", category:"Driving"},
+  {name:"Football Bros", img:"football.png", file:"game16.html", category:"Sports"},
+  {name:"Racecar Survival", img:"Arena.png", file:"game17.html", category:"Driving"},
+  {name:"Obby but you're on a Bike", img:"obby.png", file:"game18.html", category:"Action"},
+  {name:"Hollow Knight (goated)", img:"knight.png", file:"game19.html", category:"Action"},
+  {name:"Eddy's Carsim", img:"carsim.png", file:"carsim.html", category:"Driving"},
+  {name:"Eggy Car", img:"eggy.png", file:"eggy.html", category:"Driving"},
+  {name:"Basketball Random", img:"random.png", file:"Basketballrandom.html", category:"Sports"},
+  {name:"Pizza Tower", img:"pizza.png", file:"pizzatower.html", category:"Action"},
+  {name:"Bitlife", img:"bitlife.png", file:"bitlife.html", category:"Idle"},
+  {name:"Impossible Quiz", img:"impossible.png", file:"games/impossiblequiz.html", category:"Action"},
+  {name:"Solar Smash", img:"smash.png", file:"solarsmash.html", category:"Action"},
+  {name:"Thorns and Balloon (very ahmet)", img:"thorns.png", file:"thorns.html", category:"Action"},
+  {name:"Escape Car", img:"escape.png", file:"escape.html", category:"Driving"},
+  {name:"Jetpack Joyride", img:"jetpack.png", file:"game20.html", category:"Action"},
+  {name:"Cargo Racing", img:"jeep.png", file:"cargoracing.html", category:"Driving"},
+  {name:"Cookie Clicker", img:"cookie.png", file:"game21.html", category:"Idle"},
+  {name:"Ragdoll", img:"archer.png", file:"archers.html", category:"Action"},
+  {name:"Retro Bowl", img:"ah.png", file:"retrobowl.html", category:"Sports"},
+  {name:"Police Chase Drift", img:"drifter.png", file:"drifter.html", category:"Driving"},
+  {name:"Slope", img:"slope.png", file:"slopetry4.html", category:"Action"},
+  {name:"Cluster Rush", img:"cluster.png", file:"cluster.html", category:"Action"},
+  {name:"Stickman Hook", img:"hook.png", file:"stickmanhook.html", category:"Action"},
+  {name:"Backrooms", img:"backrooms.png", file:"backrooms.html", category:"Action"},
+  {name:"Run 3", img:"run3.png", file:"run3.html", category:"Action"},
+  {name:"Snek.io", img:"snek.png", file:"snek.html", category:"Action"},
+  {name:"2048", img:"2048.png", file:"games/2048.html", category:"Action"},
+  {name:"Idle Restaurant", img:"idle.png", file:"idle.html", category:"Idle"},
+  {name:"Little Alchemy 2", img:"alchemy.png", file:"games/alchemy.html", category:"Puzzle"},
+  {name:"Watermelon Game", img:"watermelon.png", file:"games/watermelon.html", category:"Puzzle"},
+  {name:"Draw Climber", img:"drawclimber.png", file:"games/drawclimber.html", category:"Action"},
+  {name:"Bubble Shooter", img:"bubble.png", file:"games/bubble.html", category:"Action"},
+  {name:"Checkout Frenzy", img:"checkout.png", file:"games/checkout.html", category:"Action"},
+  {name:"Slope 2", img:"Slope2.png", file:"games/slope2.html", category:"Action"},
+  {name:"Monkey Mart", img:"mart.png", file:"games/monkeymart.html", category:"Idle"},
+  {name:"Draw the Hill", img:"drawthehill.png", file:"games/drawthehill.html", category:"Driving"},
+  {name:"Getaway Shootout", img:"getaway.png", file:"games/getaway-shootout.html", category:"Action"},
   {name:"Cubefield", img:"cubefield.png", file:"games/cubefield.html", category:"Action"}
 ];
 
@@ -274,7 +276,7 @@ function renderGames(){
 }
 
 /* CATEGORY FILTER */
-function filterCategory(category){
+function filterCategory(category, event){
   currentCategory = category;
   buttons.forEach(btn=>btn.classList.remove("active"));
   event.target.classList.add("active");
