@@ -22,12 +22,13 @@ header nav a:hover { text-decoration: underline; }
 .hero button { background: #f97316; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 16px; transition: transform 0.25s ease; }
 .hero button:hover { background: #d9690d; transform: scale(1.05); }
 
+/* COURSES */
 .courses { padding: 60px 20px; }
 .courses h2 { margin-bottom: 30px; }
 .card-container {
   display: flex;
   gap:40px;
-  flex-wrap: nowrap; /* single horizontal line */
+  flex-wrap: nowrap; 
   overflow-x: auto;
   padding-bottom: 20px;
   scroll-behavior: smooth;
@@ -44,7 +45,7 @@ header nav a:hover { text-decoration: underline; }
 .about, .contact { padding: 40px; }
 .about h2, .contact h2 { margin-bottom: 15px; }
 
-/* GAME APP SECTION (hidden initially) */
+/* GAME APP */
 #gameApp { display: none; background: #111; color: white; text-align: center; min-height: 100vh; padding: 20px; }
 
 /* SEARCH BAR */
@@ -71,7 +72,7 @@ header nav a:hover { text-decoration: underline; }
 .game-card span { display: block; margin-top: 8px; font-weight: bold; }
 
 /* POPUP */
-.backblur { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+.backblur { position: fixed; inset: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
 .backblur.active { opacity: 1; pointer-events: all; }
 .popup { background: gray; color: black; position: relative; padding: 20px; border: 3px solid red; border-radius: 10px; width: 80%; max-width: 600px; max-height: 85vh; text-align: center; transition: transform 0.3s ease; }
 .popup img { width: 100%; max-height: 60vh; object-fit: contain; border-radius: 12px; }
@@ -79,6 +80,11 @@ header nav a:hover { text-decoration: underline; }
 .popup p { font-size: 15px; color: red; margin: 10px 0; }
 .closebutton { position: absolute; top: 10px; right: 20px; font-size: 20px; color: yellow; cursor: pointer; transition: transform 0.15s ease; }
 .closebutton:hover { transform: scale(1.5); color: red; }
+
+/* SIGNUP FORM */
+#signupForm input { padding:10px; font-size:16px; width:200px; border-radius:5px; border:1px solid #fff; margin-bottom:15px; }
+#signupForm button { padding:10px 20px; font-size:16px; border:none; border-radius:5px; background:orange; color:white; cursor:pointer; }
+#signupForm button:hover { transform: scale(1.05); }
 </style>
 </head>
 <body>
@@ -99,6 +105,14 @@ header nav a:hover { text-decoration: underline; }
     <h1>Edu Calculators</h1>
     <p>Enjoy our army of calculators for different tasks</p>
     <button id="signupBtn">Sign Up</button>
+
+    <!-- FAKE SIGNUP FORM -->
+    <div id="signupForm" style="display:none;">
+      <h2>Create Your Account</h2>
+      <input type="text" id="usernameInput" placeholder="Enter a username">
+      <br>
+      <button id="continueBtn">Continue</button>
+    </div>
   </section>
 
   <section class="courses">
@@ -118,7 +132,7 @@ header nav a:hover { text-decoration: underline; }
       </div>
       <div class="card">
         <div class="card-top">Science</div>
-        <div class="card-body"><h3>Science</h3><p>Level yourself up with enhanced scientific skills with this advanced calculator to slove all your scientific issues.</p></div>
+        <div class="card-body"><h3>Science</h3><p>Level yourself up with enhanced scientific skills with this advanced calculator to solve all your scientific issues.</p></div>
       </div>
     </div>
   </section>
@@ -141,11 +155,11 @@ header nav a:hover { text-decoration: underline; }
 
   <div class="category-buttons">
     <button onclick="filterCategory('All', event)" class="active">All</button>
-    <button onclick="filterCategory('Driving', event)" class="active">Driving</button>
-    <button onclick="filterCategory('Sports', event)" class="active">Sports</button>
-    <button onclick="filterCategory('Action', event)" class="active">Action</button>
-    <button onclick="filterCategory('Idle', event)" class="active">Idle</button>
-    <button onclick="filterCategory('Puzzle', event)" class="active">Puzzle</button>
+    <button onclick="filterCategory('Driving', event)">Driving</button>
+    <button onclick="filterCategory('Sports', event)">Sports</button>
+    <button onclick="filterCategory('Action', event)">Action</button>
+    <button onclick="filterCategory('Idle', event)">Idle</button>
+    <button onclick="filterCategory('Puzzle', event)">Puzzle</button>
   </div>
 
   <button id="randomGameBtn">🎲 Play Random</button>
@@ -163,22 +177,20 @@ header nav a:hover { text-decoration: underline; }
 </section>
 
 <script>
-// CHECK IF USER RETURNED FROM SIGNUP
-const params = new URLSearchParams(window.location.search);
+// SHOW SIGNUP FORM ON BUTTON
+document.getElementById("signupBtn").addEventListener("click", () => {
+  document.getElementById("heroSection").style.display = "none"; // hide hero
+  document.getElementById("signupForm").style.display = "block";  // show signup form
+});
 
-if (params.get("entered") === "true") {
+// CONTINUE TO GAME APP
+document.getElementById("continueBtn").addEventListener("click", () => {
+  const username = document.getElementById("usernameInput").value.trim();
+  if(!username) return alert("Please enter a username!");
+
+  document.getElementById("signupForm").style.display = "none";
   document.getElementById("landingPage").style.display = "none";
   document.getElementById("gameApp").style.display = "block";
-  document.getElementById("popupBg").classList.add("active");
-
-  setTimeout(() => {
-    document.getElementById("gameApp").scrollIntoView({ behavior: "smooth" });
-  }, 100);
-}
-  /* SHOW GAME APP ON SIGNUP */
-document.getElementById("signupBtn").addEventListener("click", () => {
-  document.getElementById("landingPage").style.display = "none"; // hide landing
-  document.getElementById("gameApp").style.display = "block";    // show game section
   document.getElementById("popupBg").classList.add("active");
   document.getElementById("gameApp").scrollIntoView({ behavior: "smooth" });
 });
@@ -242,10 +254,9 @@ const gamesList = [
   {name:"Draw the Hill", img:"drawthehill.png", file:"games/drawthehill.html", category:"Driving"},
   {name:"Getaway Shootout", img:"getaway.png", file:"games/getaway-shootout.html", category:"Action"},
   {name:"Cubefield", img:"cubefield.png", file:"games/cubefield.html", category:"Action"},
-    {name:"Moto Road Rash 3d", img:"road.png", file:"games/roadrash3d", category:"Driving"},
+  {name:"Moto Road Rash 3d", img:"road.png", file:"games/roadrash3d", category:"Driving"},
   {name:"Highway Moto", img:"moto.png", file:"games/moto.html", category:"Driving"},
 ];
-
 
 /* DOM ELEMENTS */
 const container = document.getElementById("gamesContainer");
