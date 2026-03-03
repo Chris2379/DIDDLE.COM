@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculator</title>
+<title>Calculator Preview</title>
 
 <style>
 body {
@@ -20,7 +20,7 @@ body {
   background: black;
   border-radius: 10px;
   max-width: 500px;
-  max-height: 700px;
+  height: 750px;
   overflow: hidden;
 }
 
@@ -73,6 +73,27 @@ button:active {
 .operator-btn:active {
   background-color: hsl(35, 100%, 75%);
 }
+
+#back {
+  background: F97316;
+  width: 150px;
+  height: 33px;
+  border: 2px solid white;
+  border-radius: 4px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+  #back:hover {
+  background: hsl(39, 100%, 40%);
+}
+
+  #back:active {
+  background: hsl(39, 100%, 55%);
+}
+
+  
 </style>
 </head>
 
@@ -104,10 +125,16 @@ button:active {
 
     <button onclick="clearDisplay()" class="operator-btn">C</button>
   </div>
+
+  <div> <button id="preview">Preview Calc</button> </div>
 </div>
 
 <script>
-const display = document.getElementById("display");
+document.getElementById("back").addEventListener("click", function () {
+    window.location.href = "https://educationforever.github.io/calculator.solver/index.html";
+});
+  
+  const display = document.getElementById("display");
 
 function appendToDisplay(input){
   display.value += input;
