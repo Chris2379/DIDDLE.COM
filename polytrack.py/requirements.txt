@@ -1,0 +1,9 @@
+matplotlib==3.8.0
+numpy==2.2.1
+opencv_python==4.8.1.78
+opencv_python_headless==4.8.0.74
+pandas==2.2.3
+PyYAML==6.0.1
+PyYAML==6.0.2
+scipy==1.15.0
+ultralytics==8.0.197
